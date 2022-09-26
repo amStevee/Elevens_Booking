@@ -31,6 +31,7 @@ export default function Hotel() {
   const { user } = useContext(AuthContex);
   const navigate = useNavigate();
 
+  //CALCULATES HOW MANY DAYS
   const MILISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
     const timeDiff = Math.abs(date2.getTime() - date1.getTime());
@@ -64,9 +65,12 @@ export default function Hotel() {
     setSlideIndex(newSlideIndex);
   };
 
+  console.log(user);
+
   const handleOption = () => {
     if (user) {
       setOpenModal(true);
+      console.log("toggling");
     } else {
       navigate("/login");
     }
@@ -126,6 +130,7 @@ export default function Hotel() {
               right={"0"}
               color={"#fff"}
               borderR={"5px"}
+              handleOption={handleOption}
             />
             <h1 className="hotelTitle"> {items.data.data.name}</h1>
             <div className="hotelAddress">
@@ -179,15 +184,14 @@ export default function Hotel() {
                   borderR={"5px"}
                   color={"#fff"}
                   text={"Reserve or Book Now!"}
-                  onClick={handleOption}
+                  handleOption={handleOption}
                 />
               </div>
             </div>
+            {openModal && <Modal />}
           </div>
           <MailList />
           <Footer />
-
-          {openModal && <Modal />}
         </StyledHotel>
       )}
     </div>

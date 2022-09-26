@@ -1,5 +1,9 @@
-import StyledModal from "../styles/Modal.styled";
+import StyledModal from "../styles/Modal.styled.js";
 
 export default function Modal() {
-  return <StyledModal>Modal</StyledModal>;
+  return (
+    <StyledModal>
+      <h1>MODAL</h1>
+    </StyledModal>
+  );
 }
