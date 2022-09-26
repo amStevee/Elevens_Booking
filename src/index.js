@@ -8,19 +8,25 @@ import { theme } from "./styles/Theme";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import Context from "./contex/ContextProvider";
+import SearchContexProvider from "./contex/searchContex";
+import AuthContexProvider from "./contex/AuthContext";
 library.add(faCoffee);
 // import { ReactQueryDevtools } from "react-query/devtools";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Context>
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ThemeProvider>
-    </Context>
+    <AuthContexProvider>
+      <SearchContexProvider>
+        <Context>
+          <ThemeProvider theme={theme}>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </ThemeProvider>
+        </Context>
+      </SearchContexProvider>
+    </AuthContexProvider>
   </React.StrictMode>
 );
 

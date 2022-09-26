@@ -15,8 +15,10 @@ import {
 import Button from "./reuseables/Button";
 import HeaderSearch from "../styles/HeaderSearch.styled";
 import { theme } from "../styles/Theme";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { SearchContex } from "../contex/searchContex";
+import { AuthContex } from "../contex/AuthContext";
 // import { useContexts } from "../contex/ContextProvider";
 
 //BUGS-////////////////////////////////////////////////////////////////////////////////
@@ -46,6 +48,7 @@ export default function Header({ type }) {
   });
 
   const navigate = useNavigate();
+  const { user } = useContext(AuthContex);
 
   const handleOption = (name, operation) => {
     setOptions((prev) => {
@@ -56,7 +59,10 @@ export default function Header({ type }) {
     });
   };
 
+  const { dispatch } = useContext(SearchContex);
+
   const handleSearch = () => {
+    dispatch({ type: "NEW_SEARCH", payload: { destination, date, options } });
     navigate("/hotels", { state: { destination, date, options } });
   };
 
@@ -101,13 +107,15 @@ export default function Header({ type }) {
               Get rewarded for your travels - unlock instant savings of 10% or
               more with a free Logbooking account
             </p>
-            <Button
-              text="Sign in/Register"
-              padding={"10px"}
-              background={theme.color.button}
-              color={"#fff"}
-              border={"none"}
-            />
+            {!user && (
+              <Button
+                text={"Sign in/Register"}
+                padding={"10px"}
+                background={theme.color.button}
+                color={"#fff"}
+                border={"none"}
+              />
+            )}
             {/* //SEARCH AREA/////////////////////////////////////////////// */}
             <HeaderSearch>
               <div className="headerSearchItem">

@@ -1,11 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
+//GET ALL HOTELS
 const getHotels = () => {
   return axios.get(
     "http://localhost:5000/api/hotels/countBYCity?cities=tokyo,london,madrid"
   );
 };
+
+//GET SINGLE HOTEL BY ID
+const getHotel = (id) => {
+  return axios.get(`http://localhost:5000/api/hotels/findhotel/${id}`);
+};
+
 //GETS THE TYPE OF HOTEL FROM HOTEL DB AND NUMBER OF OCCURANCE
 const getTypes = () => {
   return axios.get(
@@ -29,6 +36,10 @@ const getLists = (destination, min, max) => {
 
 export const useLists = (destination, min, max) => {
   return useQuery(["hotel_lists"], () => getLists(destination, min, max));
+};
+
+export const useHotel = (id) => {
+  return useQuery(["single_hotel"], () => getHotel(id));
 };
 
 export const useData = (onSuccess, onError) => {
