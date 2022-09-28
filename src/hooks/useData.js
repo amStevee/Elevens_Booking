@@ -13,6 +13,13 @@ const getHotel = (id) => {
   return axios.get(`http://localhost:5000/api/hotels/findhotel/${id}`);
 };
 
+//GET ROOMS
+const getRoom = (hotelId) => {
+  const dats = axios.get(`http://localhost:5000/api/hotels/room/${hotelId}`);
+  console.log(dats);
+  return dats;
+};
+
 //GETS THE TYPE OF HOTEL FROM HOTEL DB AND NUMBER OF OCCURANCE
 const getTypes = () => {
   return axios.get(
@@ -40,6 +47,10 @@ export const useLists = (destination, min, max) => {
 
 export const useHotel = (id) => {
   return useQuery(["single_hotel"], () => getHotel(id));
+};
+
+export const useRoom = (hotelId) => {
+  return useQuery(["single_room"], () => getRoom(hotelId));
 };
 
 export const useData = (onSuccess, onError) => {

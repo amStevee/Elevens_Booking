@@ -16,7 +16,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useHotel } from "../hooks/useData";
 import { SearchContex } from "../contex/searchContex";
 import { AuthContex } from "../contex/AuthContext";
-import Modal from "../components/Modal";
+import Modal from "../components/ReservationModal";
+
 export default function Hotel() {
   const location = useLocation();
   const path = location.pathname.split("/", [3]);
@@ -188,12 +189,12 @@ export default function Hotel() {
                 />
               </div>
             </div>
-            {openModal && <Modal />}
           </div>
           <MailList />
           <Footer />
         </StyledHotel>
       )}
+      {openModal && <Modal setOpenModal={setOpenModal} hotelId={id} />}
     </div>
   );
 }
