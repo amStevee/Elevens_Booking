@@ -76,16 +76,16 @@ export default function Hotel() {
       navigate("/login");
     }
   };
-  const photo = [
-    {
-      src: "https://images.unsplash.com/photo-1505159940484-eb2b9f2588e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    },
-    { src: "./places/two.jpg" },
-    { src: "./places/three.jpg" },
-    { src: "./places/four.jpg" },
-    { src: "./places/five.jpg" },
-    { src: "./places/footbal.jpg" },
-  ];
+  // const photo = [
+  //   {
+  //     src: "https://images.unsplash.com/photo-1505159940484-eb2b9f2588e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+  //   },
+  //   { src: "./places/two.jpg" },
+  //   { src: "./places/three.jpg" },
+  //   { src: "./places/four.jpg" },
+  //   { src: "./places/five.jpg" },
+  //   { src: "./places/footbal.jpg" },
+  // ];
   return (
     <div>
       <Navbar />

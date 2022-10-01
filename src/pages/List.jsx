@@ -24,6 +24,9 @@ export default function List() {
     max
   );
 
+  console.log(setDestination(location.state.destination));
+  console.log(setOptions(location.state.options));
+
   if (isFetching) {
     return <h2>Loading....</h2>;
   }
