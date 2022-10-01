@@ -3,17 +3,22 @@ import styled from "styled-components";
 const StyledModal = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: #8ec5fc;
-  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
+  padding: 13px;
 
   .rcontainer {
     position: relative;
+    background-color: #8ec5fc;
+    background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+    padding: 20px;
   }
 
   .rClose {
@@ -25,8 +30,43 @@ const StyledModal = styled.div`
 
   .rItem {
     color: #000;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;
   }
 
+  .rInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .rTitle,
+  .rPrice {
+    font-weight: 500;
+  }
+
+  .rDesc {
+    font-weight: 300;
+  }
+
+  .rMax {
+    font-size: 12px;
+  }
+
+  .room {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .selectRooms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    font-size: 13px;
+    color: gray;
+  }
   .scale-up-center {
     -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
       both;

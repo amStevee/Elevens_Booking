@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Input from "../components/reuseables/Input";
 import { AuthContex } from "../contex/AuthContext";
 import StyledLogin from "../styles/Login.styled";
 
@@ -36,7 +37,24 @@ export default function Login() {
   return (
     <StyledLogin>
       <div className="lcontainer">
-        <input
+        <h1>
+          <Link to={"/register"}>Register</Link>
+        </h1>
+        <label htmlFor={"username"}>Username:</label>
+        <Input
+          type={"text"}
+          id={"username"}
+          placeholder={"username"}
+          onChange={handleChange}
+        />
+        <label htmlFor={"password"}>Password:</label>
+        <Input
+          type={"password"}
+          id={"password"}
+          placeholder={"password"}
+          onChange={handleChange}
+        />
+        {/* <input
           type="text"
           id="username"
           placeholder="username"
@@ -47,7 +65,7 @@ export default function Login() {
           id="passwords"
           placeholder="password"
           onChange={handleChange}
-        />
+        /> */}
 
         <button disabled={loading} onClick={handleClick}>
           Login
