@@ -4,18 +4,22 @@ import axios from "axios";
 //GET ALL HOTELS
 const getHotels = () => {
   return axios.get(
-    "http://localhost:5000/api/hotels/countBYCity?cities=tokyo,london,madrid"
+    "https://boiling-wave-77839.herokuapp.com/api/hotels/countBYCity?cities=tokyo,london,madrid"
   );
 };
 
 //GET SINGLE HOTEL BY ID
 const getHotel = (id) => {
-  return axios.get(`http://localhost:5000/api/hotels/findhotel/${id}`);
+  return axios.get(
+    `https://boiling-wave-77839.herokuapp.com/api/hotels/findhotel/${id}`
+  );
 };
 
 //GET ROOMS
 const getRoom = (hotelId) => {
-  const dats = axios.get(`http://localhost:5000/api/hotels/room/${hotelId}`);
+  const dats = axios.get(
+    `https://boiling-wave-77839.herokuapp.com/api/hotels/room/${hotelId}`
+  );
   console.log(dats);
   return dats;
 };
@@ -23,19 +27,19 @@ const getRoom = (hotelId) => {
 //GETS THE TYPE OF HOTEL FROM HOTEL DB AND NUMBER OF OCCURANCE
 const getTypes = () => {
   return axios.get(
-    "http://localhost:5000/api/hotels/countByType?types=hotel,apartments,resort,villa,cabin"
+    "https://boiling-wave-77839.herokuapp.com/api/hotels/countByType?types=hotel,apartments,resort,villa,cabin"
   );
 };
 
 const getProperties = () => {
   return axios.get(
-    "http://localhost:5000/api/hotels?featured=true&min=120&max=160"
+    "https://boiling-wave-77839.herokuapp.com/api/hotels?featured=true&min=120&max=160"
   );
 };
 
 const getLists = (destination, min, max) => {
   return axios.get(
-    `http://localhost:5000/api/hotels/cities?city=${destination}&min=${
+    `https://boiling-wave-77839.herokuapp.com/api/hotels/cities?city=${destination}&min=${
       min || 0
     }&max=${max || 999}`
   );

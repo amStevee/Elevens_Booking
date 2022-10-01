@@ -57,8 +57,11 @@ export default function Modal({ setOpenModal, hotelId }) {
       await Promise.all(
         selectedRooms.map((roomId) => {
           const res = axios.put(
-            `http://localhost:5000/api/rooms/availability/${roomId}`,
-            { date: allDates, id: hotelId }
+            `https://boiling-wave-77839.herokuapp.com/api/rooms/availability/${roomId}`,
+            {
+              date: allDates,
+              id: hotelId,
+            }
           );
           return res.data;
         })

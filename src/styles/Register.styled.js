@@ -1,11 +1,19 @@
 import styled from "styled-components";
 
+export const ErrorMessage = styled.span`
+  font-size: 12px;
+  color: yellow;
+  display: none;
+`;
+
 const StyledRegister = styled.div`
+  background-color: purple;
   form {
     background: linear-gradient(
       rgba(255, 255, 255, 0.1),
       rgba(255, 255, 255, 0.2)
     );
+
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -21,7 +29,6 @@ const StyledRegister = styled.div`
       justify-content: center;
       flex-direction: column;
       align-items: center;
-      margin: auto;
       padding: 6px;
       width: 250px;
 
@@ -32,13 +39,11 @@ const StyledRegister = styled.div`
       input:invalid[focused="true"] {
         border: 2px solid red;
       }
-
       span {
         font-size: 12px;
         color: yellow;
         display: none;
       }
-
       input:invalid[focused="true"] ~ span {
         display: block;
       }

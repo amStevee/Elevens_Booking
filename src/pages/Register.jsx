@@ -1,19 +1,29 @@
 import StyledRegister from "../styles/Register.styled";
 import Input from "../components/reuseables/Input";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Register() {
   const [Values, setValues] = useState([]);
+  const navigate = useNavigate();
 
   //   const usernameRef = useRef();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
     const fdata = Object.fromEntries(data.entries());
-    console.log(Values);
     setValues(fdata);
+    const res = await axios.post(
+      `https://boiling-wave-77839.herokuapp.com/api/auth/register`,
+      Values
+    );
+    if (res.data) {
+      navigate("/login");
+    } else {
+      console.log("something went wrong");
+    }
   };
 
   const inputs = [
@@ -62,7 +72,7 @@ export default function Register() {
       placeholder: "Confirm Password",
       erroMessage: "Password dont match!",
       label: "Confirm Password",
-      pattern: Values.password,
+      pattern: Values.passwords,
       required: true,
     },
   ];
@@ -74,7 +84,7 @@ export default function Register() {
         </h1>
         {inputs.map((inp) => {
           return (
-            <div key={inp.id}>
+            <div className="fbody" key={inp.id}>
               <label htmlFor={inp.label}>{inp.label}</label>
               <Input
                 key={inp.id}

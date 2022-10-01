@@ -17,7 +17,7 @@ export default function Input(props) {
         pattern={props.pattern}
         onBlur={handlefocused}
         onFocus={() => props.name === "confirmPassword" && setFocused(true)}
-        onChange={props.onChange}
+        onChange={props.handleChange}
         focused={focused.toString()}
       />
     </StyledInput>

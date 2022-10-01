@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Input from "../components/reuseables/Input";
+// import Input from "../components/reuseables/Input";
 import { AuthContex } from "../contex/AuthContext";
 import StyledLogin from "../styles/Login.styled";
 
@@ -23,10 +23,13 @@ export default function Login() {
     e.preventDefault();
     dispatch({ type: "LOGGING_IN" });
     try {
-      const res = await axios.post(`http://localhost:5000/api/auth/login`, {
-        username: credentials.username,
-        passwords: credentials.passwords,
-      });
+      const res = await axios.post(
+        `https://boiling-wave-77839.herokuapp.com/api/auth/login`,
+        {
+          username: credentials.username,
+          passwords: credentials.passwords,
+        }
+      );
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       navigate("/");
     } catch (error) {
@@ -40,21 +43,7 @@ export default function Login() {
         <h1>
           <Link to={"/register"}>Register</Link>
         </h1>
-        <label htmlFor={"username"}>Username:</label>
-        <Input
-          type={"text"}
-          id={"username"}
-          placeholder={"username"}
-          onChange={handleChange}
-        />
-        <label htmlFor={"password"}>Password:</label>
-        <Input
-          type={"password"}
-          id={"password"}
-          placeholder={"password"}
-          onChange={handleChange}
-        />
-        {/* <input
+        <input
           type="text"
           id="username"
           placeholder="username"
@@ -65,7 +54,7 @@ export default function Login() {
           id="passwords"
           placeholder="password"
           onChange={handleChange}
-        /> */}
+        />
 
         <button disabled={loading} onClick={handleClick}>
           Login
