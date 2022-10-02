@@ -29,6 +29,8 @@ export default function List() {
   }
 
   if (isError) {
+    setDestination(false);
+    setOptions(false);
     throw error;
   }
 
