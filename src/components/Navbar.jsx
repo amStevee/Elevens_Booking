@@ -16,7 +16,7 @@ export default function Navbar() {
     <StyledNav>
       <div className="navContainer">
         <Link to={"/"}>
-          <span className="logo">logbooking</span>
+          <span className="logo">Elevensbooking</span>
         </Link>
         {user ? (
           user.username
